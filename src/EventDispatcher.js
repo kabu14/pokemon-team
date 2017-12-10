@@ -1,12 +1,12 @@
-let Event = () => {
+function EventDispatcher() {
     this._listeners = [];
-};
+}
 
-Event.prototype.attach = (listener) => {
+EventDispatcher.prototype.attach = (listener) => {
     this._listeners.push(listener);
 };
 
-Event.prototype.notify = (args) => {
+EventDispatcher.prototype.notify = (args) => {
     for (let listener of this._listeners) {
         listener(args);
     }
