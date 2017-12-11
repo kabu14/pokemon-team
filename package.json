@@ -1,0 +1,24 @@
+{
+  "name": "chimp-js-assignment-wayne-huang",
+  "version": "1.0.0",
+  "description": "Chimp assignment for managing pokemon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://wayne-huang@bitbucket.org/chimptech/chimp-js-assignment-wayne-huang.git"
+  },
+  "keywords": [
+    "chimp",
+    "pokemon",
+    "wayne"
+  ],
+  "author": "Wayne Huang",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/chimptech/chimp-js-assignment-wayne-huang#readme",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
