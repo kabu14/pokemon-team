@@ -7,7 +7,7 @@ function Model() {
  * Wrapper for the fetch GET API.
  * Mode is set to no-cors to allow cross origin requests.
  *
- * @param {string} url
+ * @param {String} url
  *
  * @returns {Promise<Response>}
  */
@@ -25,7 +25,7 @@ Model.prototype.get = function(url) {
 /**
  * Gets a list of pokemon based on the number provided
  *
- * @param {number} num
+ * @param {Number} num
  *
  * @returns {Promise<any>}
  */
@@ -91,4 +91,31 @@ Model.prototype.groupPokemon = function(pokemon) {
             }
         }
     }
+};
+
+/**
+ * Adds the pokemon chosen in the select by finding the id in the available model.
+ *
+ * @param {Number} pokemonId
+ */
+Model.prototype.addPokemon = function(pokemonId) {
+    let pickedPokemon;
+    // Since the select only provides the ID, it can be used to track which pokemon
+    // in the model.
+    for (let pokemon of this.availablePokemon) {
+        for (let child of pokemon.children) {
+            if (child.id == pokemonId) {
+                pickedPokemon = child;
+                break;
+            }
+        }
+
+        // If the pokemon is found break out of the search
+        if (!_.isNil(pickedPokemon)) {
+            break;
+        }
+    }
+
+    // Add the picked pokemon to the team
+    this.teamPokemon.push(pickedPokemon);
 };
