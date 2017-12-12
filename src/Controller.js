@@ -42,6 +42,10 @@ Controller.prototype.initDropDown = function(num) {
  */
 Controller.prototype.setUpHandlers = function() {
     this.view.addPokemonEvent.attach((args) => {
-        this.model.addPokemon(args.pokemonId)
-    })
+        this.model.addPokemon(args.pokemonId);
+    });
+
+    this.view.removePokemonEvent.attach((args) => {
+        this.model.removePokemon(args.pokemonId);
+    });
 };

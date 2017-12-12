@@ -2,7 +2,7 @@ function Model() {
     this.teamPokemon = [];
     this.availablePokemon = [];
     this.addPokemonEvent = new EventDispatcher();
-    this.deletePokemonEvent = new EventDispatcher();
+    this.removePokemonEvent = new EventDispatcher();
 }
 
 /**
@@ -121,6 +121,16 @@ Model.prototype.addPokemon = function(pokemonId) {
     // Add the picked pokemon to the team
     this.teamPokemon.push(pickedPokemon);
     this.addPokemonEvent.notify(pickedPokemon)
+};
+
+/**
+ * Removes the pokemon from the model
+ * TODO - Remove pokemon from model.
+ *
+ * @param {Number} pokemonId
+ */
+Model.prototype.removePokemon = function(pokemonId) {
+    this.removePokemonEvent.notify(pokemonId)
 };
 
 /**
