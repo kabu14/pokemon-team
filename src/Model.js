@@ -106,7 +106,9 @@ Model.prototype.groupPokemon = function(pokemon) {
  * @param {Number} pokemonId
  */
 Model.prototype.addPokemon = function(pokemonId) {
-    let pickedPokemon;
+    let pickedPokemon,
+        container;
+
     // Since the select only provides the ID, it can be used to track which pokemon
     // in the model.
     for (let pokemon of this.availablePokemon) {
@@ -125,7 +127,14 @@ Model.prototype.addPokemon = function(pokemonId) {
 
     // Add the picked pokemon to the team
     this.teamPokemon.push(pickedPokemon);
-    this.addPokemonEvent.notify(pickedPokemon)
+
+    // Contains the picked pokemon and the pokemon in the team
+    container = {
+        pickedPokemon,
+        teamPokemon: this.getTeamPokemon()
+    };
+
+    this.addPokemonEvent.notify(container);
 };
 
 /**

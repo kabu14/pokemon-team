@@ -48,8 +48,9 @@ View.prototype.setUpHandlers = function() {
     /**
      * Event dispatcher handlers that allows the Model to talk to the View.
      */
-    this.model.addPokemonEvent.attach((pickedPokemon) => {
-        this.show(pickedPokemon);
+    this.model.addPokemonEvent.attach((container) => {
+        this.show(container.pickedPokemon);
+        this.checkTeamStatus(container.teamPokemon);
     });
 
     this.model.removePokemonEvent.attach((pokemonId) => {
@@ -104,6 +105,7 @@ View.prototype.show = function(pickedPokemon) {
             </div>`;
     this.pokemonTeamContainer.insertAdjacentHTML('beforeend', content);
 
+    // Sets up the handler for the remove button since it is added dynamically
     removeParentElement = document.querySelector('.pokemon[data-pokemon-id="' + pickedPokemon.id + '"]');
     this.setUpRemoveHandler(removeParentElement);
 };
@@ -115,4 +117,18 @@ View.prototype.show = function(pickedPokemon) {
  */
 View.prototype.remove = function(pokemonId) {
     document.querySelector('.pokemon[data-pokemon-id="' + pokemonId + '"]').remove();
+};
+
+/**
+ * Checks the team status and runs functions based on the status
+ *
+ * @param {Array} teamPokemon
+ */
+View.prototype.checkTeamStatus = function(teamPokemon) {
+    // Disable the select drop box if there are 6 pokemon in the team
+    if (teamPokemon.length == 6) {
+        this.$pokemonSelect.select2({
+            disabled: true
+        });
+    }
 };
