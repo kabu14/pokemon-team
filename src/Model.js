@@ -1,3 +1,8 @@
+/**
+ * The Model that handles the data
+ *
+ * @constructor
+ */
 function Model() {
     this.teamPokemon = [];
     this.availablePokemon = [];

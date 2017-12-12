@@ -1,3 +1,9 @@
+/**
+ * The View that attaches the DOM events and manipulation.
+ *
+ * @param {Model} model
+ * @constructor
+ */
 function View(model) {
     this.model = model;
     this.addPokemonEvent = new EventDispatcher();

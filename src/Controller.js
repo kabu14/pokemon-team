@@ -1,3 +1,10 @@
+/**
+ * The controller that glues the view and model
+ *
+ * @param {Model} model
+ * @param {View} view
+ * @constructor
+ */
 function Controller(model, view) {
     this.model = model;
     this.view = view;
