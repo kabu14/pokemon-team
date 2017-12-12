@@ -130,11 +130,15 @@ Model.prototype.addPokemon = function(pokemonId) {
 
 /**
  * Removes the pokemon from the model
- * TODO - Remove pokemon from model.
  *
  * @param {Number} pokemonId
  */
 Model.prototype.removePokemon = function(pokemonId) {
+    _.remove(this.teamPokemon, function (val) {
+        return (val.id == pokemonId);
+    });
+
+    // Notifies the view to render the UI
     this.removePokemonEvent.notify(pokemonId)
 };
 
