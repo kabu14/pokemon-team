@@ -6,10 +6,10 @@ function Controller(model, view) {
 }
 
 /**
- * Init function
+ * Init function.
  */
 Controller.prototype.init = function() {
-    this.initDropDown()
+    this.initDropDown(10)
         .setUpHandlers();
 };
 

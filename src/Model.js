@@ -1,6 +1,8 @@
 function Model() {
     this.teamPokemon = [];
     this.availablePokemon = [];
+    this.addPokemonEvent = new EventDispatcher();
+    this.deletePokemonEvent = new EventDispatcher();
 }
 
 /**
@@ -118,4 +120,14 @@ Model.prototype.addPokemon = function(pokemonId) {
 
     // Add the picked pokemon to the team
     this.teamPokemon.push(pickedPokemon);
+    this.addPokemonEvent.notify(pickedPokemon)
+};
+
+/**
+ * Gets all the pokemon that's currently in the team.
+ *
+ * @returns {Array}
+ */
+Model.prototype.getTeamPokemon = function() {
+    return this.teamPokemon;
 };
